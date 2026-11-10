@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Mila.Desk · Productos</title>
+<meta name="description" content="Los productos de los videos de Mila.Desk. Toca un producto para verlo.">
+<meta name="theme-color" content="#0e0c0b">
+<link rel="icon" href="icono.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --ink:#0e0c0b; --card:#1a1614; --paper:#fbf6f1; --muted:#b7ada5; --faint:#857a72;
+  --orange:#ff5800; --amber:#ffb21a; --line:rgba(255,244,235,.14);
+  --display:"Archivo","Arial Black",Helvetica,sans-serif;
+  --body:"Figtree",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --gl:max(16px,env(safe-area-inset-left,0px)); --gr:max(16px,env(safe-area-inset-right,0px));
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--paper);font:400 15px/1.45 var(--body);
+  background-image:radial-gradient(120% 60% at 50% -10%,rgba(255,88,0,.22),transparent 60%);background-attachment:fixed;min-height:100vh}
+.wrap{max-width:720px;margin:0 auto;padding:0 var(--gr) 32px var(--gl)}
+header{text-align:center;padding:28px 0 14px}
+.logo{width:68px;height:68px;border-radius:18px;display:block;margin:0 auto 10px;box-shadow:0 8px 30px rgba(255,88,0,.35)}
+h1{font:800 26px/1.05 var(--display);font-stretch:125%;margin:0;letter-spacing:-.01em}
+h1 b{color:var(--orange);font-weight:inherit}
+.sub{color:var(--muted);margin:6px 0 0;font-size:15px}
+.redes{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.redes a{color:var(--paper);text-decoration:none;font-size:13px;font-weight:600;border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+.aviso{font-size:12.5px;color:var(--muted);text-align:center;margin:12px auto 0;max-width:46ch}
+.barra{position:sticky;top:0;z-index:5;padding:10px 0;margin:6px 0 4px;background:linear-gradient(var(--ink) 75%,transparent)}
+.buscar{display:flex;align-items:center;gap:8px;background:rgba(255,244,235,.07);border:1px solid var(--line);border-radius:14px;padding:0 12px}
+.buscar svg{flex:none;opacity:.6}
+.buscar input{flex:1;min-width:0;background:none;border:0;color:var(--paper);font:500 16px var(--body);padding:12px 0;outline:none}
+.buscar input::placeholder{color:var(--faint)}
+.buscar:focus-within{border-color:var(--orange)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;font:600 13px var(--body);color:var(--muted);background:none;border:1px solid var(--line);border-radius:999px;padding:6px 13px;cursor:pointer}
+.chip.on{background:var(--orange);border-color:var(--orange);color:#fff}
+ul.grid{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:560px){ul.grid{grid-template-columns:repeat(3,1fr);gap:14px}}
+.item a{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .15s,border-color .15s}
+.item a:active{transform:scale(.97)}
+@media (hover:hover){.item a:hover{border-color:rgba(255,88,0,.6)}}
+.item a:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+.foto{position:relative;display:block;aspect-ratio:1;background:#241e1b}
+.foto img{width:100%;height:100%;object-fit:cover;display:block}
+.badge{position:absolute;top:8px;left:8px;background:var(--amber);color:#1a1100;font:700 11px var(--body);letter-spacing:.02em;text-transform:uppercase;padding:3px 7px;border-radius:6px}
+.txt{display:block;padding:9px 10px 11px}
+.nombre{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-weight:600;font-size:14px;line-height:1.3;min-height:2.6em}
+.tienda{display:block;margin-top:4px;color:var(--orange);font-size:12.5px;font-weight:600}
+.vacio{text-align:center;color:var(--muted);padding:40px 0}
+footer{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);color:var(--faint);font-size:12px;text-align:center}
+footer p{margin:6px 0}
+footer a{color:var(--muted)}
+header{position:relative}
+.idioma{position:absolute;top:14px;right:0;display:flex;align-items:center;gap:6px;min-height:36px;
+  background:rgba(255,244,235,.08);border:1px solid var(--line);color:var(--paper);
+  font:600 13px var(--body);border-radius:999px;padding:6px 14px;cursor:pointer}
+.idioma svg{flex:none;opacity:.8}
+@media (hover:hover){.idioma:hover{border-color:var(--orange)}}
+.idioma:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <button type="button" class="idioma" id="idioma"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg><span id="idiomaTxt" lang="en">English</span></button>
+  <img class="logo" src="icono.png" alt="" width="68" height="68">
+  <h1>Mila<b>.</b>Desk</h1>
+  <p class="sub" data-t="sub">Los productos de mis videos. Toca uno para verlo.</p>
+  <nav class="redes" id="redes" hidden></nav>
+  <p class="aviso" data-t="avisoAmazon">Como Afiliado de Amazon, gano con las compras que califican. Algunos productos son colaboraciones con marcas y están marcados como «Patrocinado».</p>
+</header>
+
+<div class="barra">
+  <label class="buscar">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="Buscar producto" data-tp="buscar" aria-label="Buscar producto" autocomplete="off" enterkeyhint="search">
+  </label>
+  <div class="chips" id="chips" role="group" aria-label="Categorías" hidden></div>
+</div>
+
+<ul class="grid" id="grid" aria-busy="true"></ul>
+<p class="vacio" id="error" hidden data-t="error">No se pudieron cargar los productos. Recarga la página.</p>
+<p class="vacio" id="vacio" hidden data-t="vacio">No encontré ese producto. Prueba con otra palabra.</p>
+
+<footer>
+  <p data-t="pie">Los precios y la disponibilidad los define cada tienda.</p>
+</footer>
+</div>
+<script>
+(function(){
+  "use strict";
+  var T={
+    es:{sub:"Los productos de mis videos. Toca uno para verlo.",
+        avisoAmazon:"Como Afiliado de Amazon, gano con las compras que califican. Algunos productos son colaboraciones con marcas y están marcados como «Patrocinado».",
+        buscar:"Buscar producto",vacio:"No encontré ese producto. Prueba con otra palabra.",
+        error:"No se pudieron cargar los productos. Recarga la página.",
+        pie:"Los precios y la disponibilidad los define cada tienda.",patrocinado:"Patrocinado",todos:"Todos",otro:"English"},
+    en:{sub:"The products from my videos. Tap one to see it.",
+        avisoAmazon:"As an Amazon Associate I earn from qualifying purchases. Some products are brand collaborations and are marked “Sponsored”.",
+        buscar:"Search products",vacio:"I couldn't find that product. Try another word.",
+        error:"Products couldn't be loaded. Please reload the page.",
+        pie:"Prices and availability are set by each store.",patrocinado:"Sponsored",todos:"All",otro:"Español"}
+  };
+  var AMAZON=["amazon.com","amzn.to","amzn.com","a.co"];
+  var lang="es";
+  try{lang=localStorage.getItem("lang")||"";}catch(e){}
+  if(lang!=="es"&&lang!=="en"){lang=(navigator.language||"es").toLowerCase().indexOf("es")===0?"es":"en";}
+  var $=function(id){return document.getElementById(id);};
+  function el(tag,cls,txt){var n=document.createElement(tag);if(cls)n.className=cls;if(txt!=null)n.textContent=txt;return n;}
+  function norm(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");}
+  function host(u){try{return new URL(u).hostname.toLowerCase();}catch(e){return "";}}
+  function esAmazon(u){var h=host(u);return AMAZON.some(function(d){return h===d||h.slice(-d.length-1)==="."+d;});}
+  function httpsOk(u){try{return new URL(u).protocol==="https:";}catch(e){return false;}}
+  function fotoOk(f){return /^fotos\/[a-z0-9-]+\.(jpg|jpeg|png|webp|svg)$/.test(f||"");}
+
+  function aplicar(){
+    var t=T[lang];document.documentElement.lang=lang;
+    document.querySelectorAll("[data-t]").forEach(function(n){var k=n.getAttribute("data-t");if(t[k])n.textContent=t[k];});
+    var q=$("q");q.placeholder=t.buscar;q.setAttribute("aria-label",t.buscar);
+    document.querySelectorAll("[data-es]").forEach(function(n){n.textContent=n.getAttribute("data-"+lang)||n.getAttribute("data-es");});
+    var it=$("idiomaTxt");it.textContent=t.otro;it.lang=lang==="es"?"en":"es";
+  }
+  $("idioma").addEventListener("click",function(){
+    lang=lang==="es"?"en":"es";try{localStorage.setItem("lang",lang);}catch(e){}aplicar();
+  });
+
+  var cat="",items=[];
+  function filtrar(){
+    var q=norm($("q").value.trim()),n=0;
+    items.forEach(function(li){
+      var ok=(!cat||li.getAttribute("data-cat")===cat)&&(!q||li.getAttribute("data-q").indexOf(q)>-1);
+      li.hidden=!ok;if(ok)n++;
+    });
+    $("vacio").hidden=n>0||!items.length;
+  }
+  $("q").addEventListener("input",filtrar);
+
+  function tarjeta(p,enIngles){
+    var amazon=p.tipo==="amazon",tienda=amazon?"Amazon":p.marca,patro=!amazon&&p.patrocinado!==false;
+    var li=el("li","item");li.setAttribute("data-cat",p.categoria||"");
+    li.setAttribute("data-q",norm([p.nombre,p.nombre_en,tienda,p.categoria,enIngles[p.categoria]].join(" ")));
+    var a=el("a");a.href=p.enlace;a.rel=(amazon||patro)?"sponsored noopener":"noopener";
+    a.setAttribute("aria-label",p.nombre+" — "+tienda);
+    var f=el("span","foto"),img=el("img");img.src=p.foto;img.alt="";img.loading="lazy";img.decoding="async";img.width=600;img.height=600;f.appendChild(img);
+    if(patro){var b=el("span","badge","Patrocinado");b.setAttribute("data-t","patrocinado");f.appendChild(b);}
+    var txt=el("span","txt"),nom=el("span","nombre",p.nombre);nom.setAttribute("data-es",p.nombre);nom.setAttribute("data-en",p.nombre_en||p.nombre);
+    var ti=el("span","tienda",tienda+" "),fl=el("span",null,"↗");fl.setAttribute("aria-hidden","true");ti.appendChild(fl);
+    txt.appendChild(nom);txt.appendChild(ti);a.appendChild(f);a.appendChild(txt);li.appendChild(a);return li;
+  }
+
+  function pintar(d){
+    var cats=Array.isArray(d.categorias)?d.categorias:[],enIngles={};
+    cats.forEach(function(c){enIngles[c.es]=c.en||c.es;});
+    // Solo productos válidos: enlace https, foto propia, Amazon de verdad si dice Amazon.
+    var lista=(d.productos||[]).map(function(p,i){return {p:p,i:i};}).filter(function(x){var p=x.p;
+      return p&&p.nombre&&httpsOk(p.enlace)&&fotoOk(p.foto)&&(p.tipo==="amazon"?esAmazon(p.enlace):(p.tipo==="marca"&&p.marca));});
+    lista.sort(function(a,b){return a.p.fecha===b.p.fecha?b.i-a.i:(a.p.fecha<b.p.fecha?1:-1);});
+    var grid=$("grid");grid.textContent="";
+    lista.forEach(function(x){grid.appendChild(tarjeta(x.p,enIngles));});
+    grid.removeAttribute("aria-busy");
+    items=[].slice.call(grid.children);
+
+    var usadas={};lista.forEach(function(x){usadas[x.p.categoria]=1;});
+    var vis=cats.filter(function(c){return usadas[c.es];}),chips=$("chips");chips.textContent="";
+    if(vis.length>=2){
+      var todos=el("button","chip on","Todos");todos.type="button";todos.setAttribute("data-cat","");todos.setAttribute("data-t","todos");chips.appendChild(todos);
+      vis.forEach(function(c){var b=el("button","chip",c.es);b.type="button";b.setAttribute("data-cat",c.es);b.setAttribute("data-es",c.es);b.setAttribute("data-en",enIngles[c.es]);chips.appendChild(b);});
+      chips.querySelectorAll(".chip").forEach(function(b){b.addEventListener("click",function(){
+        cat=b.getAttribute("data-cat");chips.querySelectorAll(".chip").forEach(function(x){x.classList.toggle("on",x===b);});filtrar();});});
+      chips.hidden=false;
+    }
+    var redes=$("redes"),perfil=d.perfil||{};redes.textContent="";
+    [["instagram","Instagram"],["tiktok","TikTok"],["facebook","Facebook"]].forEach(function(r){
+      var u=perfil[r[0]];if(u&&httpsOk(u)){var a=el("a",null,r[1]);a.href=u;a.rel="noopener me";redes.appendChild(a);}});
+    redes.hidden=!redes.children.length;
+    aplicar();filtrar();
+  }
+
+  aplicar();
+  fetch("productos.json",{cache:"no-cache"}).then(function(r){if(!r.ok)throw 0;return r.json();})
+    .then(pintar).catch(function(){$("grid").removeAttribute("aria-busy");$("error").hidden=false;});
+})();
+</script>
+</body>
+</html>

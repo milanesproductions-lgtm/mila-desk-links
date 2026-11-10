@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' blob: data:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Panel · Mila.Desk</title>
+<meta name="theme-color" content="#0e0c0b">
+<link rel="icon" href="../icono.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root{--ink:#0e0c0b;--card:#1a1614;--card2:#221d1a;--paper:#fbf6f1;--muted:#b7ada5;--faint:#857a72;--orange:#ff5800;--amber:#ffb21a;
+  --ok:#5fd38d;--bad:#ff6b6b;--line:rgba(255,244,235,.14);
+  --display:"Archivo","Arial Black",Helvetica,sans-serif;--body:"Figtree",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--paper);font:400 15px/1.45 var(--body)}
+.wrap{max-width:640px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right)) 60px max(16px,env(safe-area-inset-left))}
+header{display:flex;align-items:center;gap:10px;padding:18px 0 8px}
+header img{width:36px;height:36px;border-radius:10px}
+header h1{font:800 18px/1.1 var(--display);font-stretch:125%;margin:0;flex:1}
+header h1 small{display:block;font:500 13px var(--body);color:var(--muted);letter-spacing:0}
+a{color:var(--orange)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:10px 18px;border-radius:12px;border:1px solid var(--line);
+  background:var(--card2);color:var(--paper);font:600 15px var(--body);cursor:pointer;text-decoration:none}
+.btn.primario{background:var(--orange);border-color:var(--orange);color:#fff;width:100%;font-size:16px;min-height:50px}
+.btn.chico{min-height:36px;padding:6px 12px;font-size:13px;border-radius:10px}
+.btn.peligro{color:var(--bad)}
+.btn:disabled{opacity:.5;cursor:default}
+.tarjeta{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-top:14px}
+h2{font:700 18px var(--body);margin:0 0 12px}
+.campo{margin-bottom:14px}
+.campo>label,.campo>.etq{display:block;font-weight:600;margin-bottom:6px}
+.ayuda{color:var(--faint);font-size:13px;margin-top:5px}
+input[type=text],input[type=url],input[type=date],input[type=password],select{width:100%;font:500 16px var(--body);color:var(--paper);background:var(--ink);
+  border:1px solid var(--line);border-radius:12px;padding:12px;outline:none;color-scheme:dark}
+input:focus,select:focus{border-color:var(--orange)}
+.portada{position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;width:min(100%,260px);aspect-ratio:1;margin:0 auto;
+  border:2px dashed var(--line);border-radius:16px;background:var(--ink) center/cover no-repeat;color:var(--muted);cursor:pointer;overflow:hidden;text-align:center;padding:12px}
+.portada.con{border-style:solid;border-color:var(--orange)}
+.portada.con span{display:none}
+.portada input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg label{display:flex;align-items:center;justify-content:center;min-height:44px;border:1px solid var(--line);border-radius:12px;font-weight:600;cursor:pointer}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg input:checked+span{color:#fff}
+.seg label:has(input:checked){background:var(--orange);border-color:var(--orange)}
+.seg input:focus-visible+span{outline:2px solid #fff;outline-offset:3px}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:500}
+.check input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--orange);flex:none}
+.aviso{border-radius:12px;padding:10px 12px;font-size:14px;margin-top:12px}
+.aviso.ok{background:rgba(95,211,141,.12);color:var(--ok)}
+.aviso.mal{background:rgba(255,107,107,.12);color:var(--bad)}
+.aviso.info{background:rgba(255,178,26,.1);color:var(--amber)}
+.fila{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.fila:first-child{border-top:0}
+.fila img{width:58px;height:58px;border-radius:10px;object-fit:cover;background:var(--card2);flex:none}
+.fila .info{flex:1;min-width:0}
+.fila .n{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fila .d{color:var(--muted);font-size:13px}
+.fila .acc{display:flex;flex-direction:column;gap:6px}
+ol.pasos{padding-left:20px;margin:0 0 14px}
+ol.pasos li{margin-bottom:8px}
+code{background:var(--card2);padding:1px 6px;border-radius:6px}
+.pie{display:flex;justify-content:space-between;gap:10px;margin-top:18px;flex-wrap:wrap}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <img src="../icono.png" alt="">
+  <h1>Panel de productos<small>Mila.Desk · links.mila-desk.com</small></h1>
+  <a class="btn chico" href="../" target="_blank" rel="noopener">Ver página ↗</a>
+</header>
+
+<!-- Conectar este dispositivo -->
+<section class="tarjeta" id="conectar" hidden>
+  <h2>Conectar este dispositivo</h2>
+  <p>Para que el panel pueda guardar productos necesita una <b>llave de GitHub</b>. Se hace una sola vez en cada celular o computadora.</p>
+  <ol class="pasos">
+    <li>Abre <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">esta página de GitHub</a> (con tu cuenta <b>milanesproductions-lgtm</b>).</li>
+    <li>En <b>Token name</b> escribe <code>Panel Mila.Desk</code>. En <b>Expiration</b> elige la fecha más lejana que te deje.</li>
+    <li>En <b>Repository access</b> elige <b>Only select repositories</b> y marca solo <code>mila-desk-links</code>.</li>
+    <li>En <b>Permissions → Repository permissions</b>, busca <b>Contents</b> y elige <b>Read and write</b>. Nada más.</li>
+    <li>Toca <b>Generate token</b>, cópialo y pégalo aquí abajo.</li>
+  </ol>
+  <div class="campo">
+    <label for="llave">Llave de GitHub</label>
+    <input type="password" id="llave" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
+    <p class="ayuda">Se guarda solo en este dispositivo. No la compartas con nadie.</p>
+  </div>
+  <button class="btn primario" id="btnConectar" type="button">Conectar</button>
+  <div class="aviso" id="msgConectar" hidden></div>
+</section>
+
+<!-- Formulario -->
+<section class="tarjeta" id="formTarjeta" hidden>
+  <h2 id="formTitulo">Agregar producto</h2>
+  <div class="campo">
+    <span class="etq">Portada</span>
+    <label class="portada" id="portada">
+      <input type="file" id="foto" accept="image/*">
+      <span>📷<br>Toca para elegir la foto<br><small>Tuya o un cuadro de tu video.<br>No uses fotos de Amazon.</small></span>
+    </label>
+    <p class="ayuda" id="ayudaFoto">Se recorta en cuadrado automáticamente.</p>
+  </div>
+  <div class="campo">
+    <label for="nombre">Nombre del producto</label>
+    <input type="text" id="nombre" maxlength="80" placeholder="Ej.: Soporte para monitor">
+  </div>
+  <div class="campo">
+    <label for="nombreEn">Nombre en inglés <span style="color:var(--faint);font-weight:400">(opcional)</span></label>
+    <input type="text" id="nombreEn" maxlength="80" placeholder="Ej.: Monitor stand">
+  </div>
+  <div class="campo">
+    <label for="enlace">Enlace del producto</label>
+    <input type="url" id="enlace" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://amzn.to/…">
+    <p class="ayuda">Tu enlace de Amazon Influencer, o la página de la marca si es una colaboración.</p>
+  </div>
+  <div class="campo">
+    <span class="etq">¿De dónde es?</span>
+    <div class="seg" role="radiogroup">
+      <label><input type="radio" name="tipo" value="amazon" checked><span>Amazon</span></label>
+      <label><input type="radio" name="tipo" value="marca"><span>Una marca</span></label>
+    </div>
+  </div>
+  <div id="bloqueMarca" hidden>
+    <div class="campo">
+      <label for="marca">Nombre de la marca</label>
+      <input type="text" id="marca" maxlength="40">
+    </div>
+    <div class="campo">
+      <label class="check"><input type="checkbox" id="patrocinado" checked>
+        <span>Es colaboración: la marca me pagó o me regaló el producto.<br><small style="color:var(--faint)">Saldrá marcado como «Patrocinado». Así lo pide la ley.</small></span></label>
+    </div>
+  </div>
+  <div class="campo">
+    <label for="categoria">Categoría</label>
+    <select id="categoria"></select>
+  </div>
+  <div class="campo">
+    <label for="fecha">Fecha del video</label>
+    <input type="date" id="fecha">
+    <p class="ayuda">Los más nuevos salen primero.</p>
+  </div>
+  <button class="btn primario" id="btnGuardar" type="button">Publicar producto</button>
+  <button class="btn" id="btnCancelar" type="button" hidden style="width:100%;margin-top:8px">Cancelar</button>
+  <div class="aviso" id="msgForm" hidden></div>
+</section>
+
+<!-- Lista -->
+<section class="tarjeta" id="listaTarjeta" hidden>
+  <h2 id="listaTitulo">Productos en la página</h2>
+  <div id="lista"></div>
+</section>
+
+<div class="pie" id="pie" hidden>
+  <button class="btn chico" id="btnRecargar" type="button">Actualizar lista</button>
+  <button class="btn chico peligro" id="btnDesconectar" type="button">Desconectar este dispositivo</button>
+</div>
+</div>
+
+<script>
+(function(){
+"use strict";
+var DUENO="milanesproductions-lgtm", REPO="mila-desk-links", RAMA="main", API="https://api.github.com";
+var AMAZON=["amazon.com","amzn.to","amzn.com","a.co"];
+var $=function(id){return document.getElementById(id);};
+var llave="", datos=null, editando=null, fotoNueva=null;
+
+function leerLlave(){try{return localStorage.getItem("ghLlave")||"";}catch(e){return "";}}
+function guardarLlave(v){try{v?localStorage.setItem("ghLlave",v):localStorage.removeItem("ghLlave");}catch(e){}}
+
+function aviso(id,tipo,txt){var n=$(id);n.className="aviso "+tipo;n.textContent=txt;n.hidden=!txt;}
+
+/* ---------- GitHub ---------- */
+function gh(metodo,ruta,cuerpo){
+  return fetch(API+ruta,{method:metodo,cache:"no-store",headers:{"Authorization":"Bearer "+llave,"Accept":"application/vnd.github+json",
+      "X-GitHub-Api-Version":"2022-11-28","Content-Type":"application/json"},body:cuerpo?JSON.stringify(cuerpo):undefined})
+    .then(function(r){
+      if(r.ok)return r.status===204?null:r.json();
+      var e=new Error("GitHub "+r.status);e.status=r.status;throw e;
+    });
+}
+function base64aTexto(b){var bin=atob(b.replace(/\s/g,""));var u=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return new TextDecoder().decode(u);}
+function cargarDatos(){
+  return gh("GET","/repos/"+DUENO+"/"+REPO+"/contents/productos.json?ref="+RAMA).then(function(r){return JSON.parse(base64aTexto(r.content));});
+}
+/* Un solo cambio (commit) con todos los archivos. archivos: [{ruta, texto}|{ruta, base64}|{ruta, borrar:true}] */
+function guardarCambio(archivos,mensaje){
+  var base="/repos/"+DUENO+"/"+REPO+"/git";
+  return gh("GET",base+"/ref/heads/"+RAMA).then(function(ref){
+    var padre=ref.object.sha;
+    return gh("GET",base+"/commits/"+padre).then(function(c){
+      return Promise.all(archivos.map(function(a){
+        if(a.borrar)return Promise.resolve({path:a.ruta,mode:"100644",type:"blob",sha:null});
+        var blob=a.base64!=null?{content:a.base64,encoding:"base64"}:{content:a.texto,encoding:"utf-8"};
+        return gh("POST",base+"/blobs",blob).then(function(b){return {path:a.ruta,mode:"100644",type:"blob",sha:b.sha};});
+      })).then(function(arbol){return gh("POST",base+"/trees",{base_tree:c.tree.sha,tree:arbol});})
+      .then(function(t){return gh("POST",base+"/commits",{message:mensaje,tree:t.sha,parents:[padre]});})
+      .then(function(nc){return gh("PATCH",base+"/refs/heads/"+RAMA,{sha:nc.sha,force:false});});
+    });
+  });
+}
+function explicarError(e){
+  if(e&&e.status===401)return "La llave no sirve o ya venció. Toca «Desconectar este dispositivo» y conecta una llave nueva.";
+  if(e&&(e.status===403||e.status===404))return "La llave no tiene permiso. Revisa que tenga acceso a mila-desk-links con Contents: Read and write.";
+  if(e&&e.status===409||e&&e.status===422)return "Hubo un cambio al mismo tiempo. Intenta de nuevo.";
+  if(e&&e.message&&e.message.indexOf("GitHub")!==0)return e.message;
+  return "No se pudo guardar. Revisa tu internet e intenta de nuevo.";
+}
+
+/* ---------- Validación (igual que revisar.py) ---------- */
+function host(u){try{return new URL(u).hostname.toLowerCase();}catch(e){return "";}}
+function esAmazon(u){var h=host(u);return AMAZON.some(function(d){return h===d||h.slice(-d.length-1)==="."+d;});}
+function esHttps(u){try{return new URL(u).protocol==="https:";}catch(e){return false;}}
+function slug(t){return (t||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,40)||"producto";}
+
+/* ---------- Foto: recorte cuadrado 600x600 en el propio dispositivo ---------- */
+function prepararFoto(archivo){
+  var abrir=window.createImageBitmap?createImageBitmap(archivo,{imageOrientation:"from-image"}).catch(function(){return createImageBitmap(archivo);}):Promise.reject();
+  return abrir.catch(function(){
+    return new Promise(function(ok,mal){var img=new Image();img.onload=function(){ok(img);};img.onerror=function(){mal(new Error("Esa foto no se pudo abrir. Prueba con una JPG o PNG."));};img.src=URL.createObjectURL(archivo);});
+  }).then(function(img){
+    var w=img.width,h=img.height,lado=Math.min(w,h),c=document.createElement("canvas");c.width=c.height=600;
+    var g=c.getContext("2d");g.imageSmoothingQuality="high";g.drawImage(img,(w-lado)/2,(h-lado)/2,lado,lado,0,0,600,600);
+    return new Promise(function(ok){c.toBlob(ok,"image/jpeg",0.85);});
+  }).then(function(blob){
+    return new Promise(function(ok){var r=new FileReader();r.onload=function(){ok({blob:blob,base64:String(r.result).split(",")[1]});};r.readAsDataURL(blob);});
+  });
+}
+$("foto").addEventListener("change",function(){
+  var f=this.files&&this.files[0];if(!f)return;
+  aviso("msgForm","info","Preparando la foto…");
+  prepararFoto(f).then(function(r){
+    fotoNueva=r;var p=$("portada");p.style.backgroundImage="url("+URL.createObjectURL(r.blob)+")";p.classList.add("con");aviso("msgForm","","");
+  }).catch(function(e){fotoNueva=null;aviso("msgForm","mal",e.message||"Esa foto no se pudo abrir.");});
+});
+
+/* ---------- Formulario ---------- */
+function tipoActual(){return document.querySelector("input[name=tipo]:checked").value;}
+function ponerTipo(t){document.querySelector("input[name=tipo][value="+t+"]").checked=true;$("bloqueMarca").hidden=t!=="marca";}
+document.querySelectorAll("input[name=tipo]").forEach(function(r){r.addEventListener("change",function(){ponerTipo(tipoActual());});});
+$("enlace").addEventListener("change",function(){var v=this.value.trim();if(v&&!/^https?:\/\//i.test(v)){v="https://"+v;this.value=v;}if(esAmazon(v))ponerTipo("amazon");else if(esHttps(v))ponerTipo("marca");});
+
+function hoy(){var d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10);}
+function limpiarForm(){
+  editando=null;fotoNueva=null;$("foto").value="";var p=$("portada");p.style.backgroundImage="";p.classList.remove("con");
+  ["nombre","nombreEn","enlace","marca"].forEach(function(id){$(id).value="";});
+  $("patrocinado").checked=true;ponerTipo("amazon");$("fecha").value=hoy();
+  if(datos&&datos.categorias&&datos.categorias.length)$("categoria").value=datos.categorias[0].es;
+  $("formTitulo").textContent="Agregar producto";$("btnGuardar").textContent="Publicar producto";$("btnCancelar").hidden=true;
+  $("ayudaFoto").textContent="Se recorta en cuadrado automáticamente.";
+}
+function editar(p){
+  limpiarForm();editando=p.foto;
+  $("nombre").value=p.nombre||"";$("nombreEn").value=p.nombre_en||"";$("enlace").value=p.enlace||"";
+  ponerTipo(p.tipo==="marca"?"marca":"amazon");$("marca").value=p.marca||"";$("patrocinado").checked=p.patrocinado!==false;
+  $("categoria").value=p.categoria||"";$("fecha").value=p.fecha||hoy();
+  var por=$("portada");por.style.backgroundImage="url(../"+p.foto+")";por.classList.add("con");
+  $("formTitulo").textContent="Editar producto";$("btnGuardar").textContent="Guardar cambios";$("btnCancelar").hidden=false;
+  $("ayudaFoto").textContent="Para cambiar la portada, toca la foto y elige otra.";
+  aviso("msgForm","","");$("formTarjeta").scrollIntoView({behavior:"smooth"});
+}
+$("btnCancelar").addEventListener("click",function(){limpiarForm();aviso("msgForm","","");});
+
+function leerForm(){
+  var p={nombre:$("nombre").value.trim(),enlace:$("enlace").value.trim(),tipo:tipoActual(),categoria:$("categoria").value,fecha:$("fecha").value};
+  var en=$("nombreEn").value.trim();if(en)p.nombre_en=en;
+  if(p.tipo==="marca"){p.marca=$("marca").value.trim();p.patrocinado=$("patrocinado").checked;}
+  if(!editando&&!fotoNueva)return "Falta la portada.";
+  if(!p.nombre)return "Falta el nombre del producto.";
+  if(!esHttps(p.enlace))return "El enlace debe empezar por https://";
+  if(p.tipo==="amazon"&&!esAmazon(p.enlace))return "Marcaste Amazon, pero el enlace no es de Amazon.";
+  if(p.tipo==="marca"&&esAmazon(p.enlace))return "El enlace es de Amazon: elige «Amazon» en ¿De dónde es?";
+  if(p.tipo==="marca"&&!p.marca)return "Falta el nombre de la marca.";
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(p.fecha))return "Falta la fecha.";
+  return p;
+}
+
+$("btnGuardar").addEventListener("click",function(){
+  var p=leerForm();if(typeof p==="string"){aviso("msgForm","mal",p);return;}
+  var btn=this;btn.disabled=true;aviso("msgForm","info","Publicando…");
+  var archivos=[],rutaFoto=editando;
+  if(fotoNueva){rutaFoto="fotos/"+slug(p.nombre)+"-"+Date.now().toString(36)+".jpg";archivos.push({ruta:rutaFoto,base64:fotoNueva.base64});}
+  p.foto=rutaFoto;
+  var eraEdicion=!!editando,fotoVieja=editando;
+  // Se vuelve a leer la lista justo antes de guardar, para no pisar otros cambios.
+  cargarDatos().then(function(d){
+    if(eraEdicion){
+      var i=d.productos.findIndex(function(x){return x.foto===fotoVieja;});
+      if(i<0)throw new Error("Ese producto ya no está en la lista. Toca «Actualizar lista».");
+      d.productos[i]=p;
+      if(fotoNueva&&fotoVieja!==rutaFoto&&!d.productos.some(function(x){return x.foto===fotoVieja;}))archivos.push({ruta:fotoVieja,borrar:true});
+    }else d.productos.push(p);
+    archivos.push({ruta:"productos.json",texto:JSON.stringify(d,null,2)+"\n"});
+    return guardarCambio(archivos,(eraEdicion?"Editar: ":"Agregar: ")+p.nombre).then(function(){return d;});
+  }).then(function(d){
+    datos=d;pintarLista();limpiarForm();
+    aviso("msgForm","ok",(eraEdicion?"Cambios guardados.":"¡Producto publicado!")+" Aparece en la página en 1 o 2 minutos.");
+  }).catch(function(e){aviso("msgForm","mal",explicarError(e));}).then(function(){btn.disabled=false;});
+});
+
+function quitar(p){
+  if(!confirm("¿Quitar «"+p.nombre+"» de la página?"))return;
+  aviso("msgForm","info","Quitando…");
+  cargarDatos().then(function(d){
+    d.productos=d.productos.filter(function(x){return x.foto!==p.foto;});
+    var archivos=[{ruta:"productos.json",texto:JSON.stringify(d,null,2)+"\n"}];
+    if(/^fotos\//.test(p.foto))archivos.push({ruta:p.foto,borrar:true});
+    return guardarCambio(archivos,"Quitar: "+p.nombre).then(function(){return d;});
+  }).then(function(d){datos=d;pintarLista();if(editando===p.foto)limpiarForm();aviso("msgForm","ok","Producto quitado. Desaparece de la página en 1 o 2 minutos.");})
+  .catch(function(e){aviso("msgForm","mal",explicarError(e));});
+}
+
+/* ---------- Lista ---------- */
+function pintarLista(){
+  var sel=$("categoria"),actual=sel.value;sel.textContent="";
+  (datos.categorias||[]).forEach(function(c){var o=document.createElement("option");o.value=c.es;o.textContent=c.es;sel.appendChild(o);});
+  if(actual)sel.value=actual;
+  var lista=(datos.productos||[]).map(function(p,i){return {p:p,i:i};});
+  lista.sort(function(a,b){return a.p.fecha===b.p.fecha?b.i-a.i:(a.p.fecha<b.p.fecha?1:-1);});
+  var cont=$("lista");cont.textContent="";
+  $("listaTitulo").textContent="Productos en la página ("+lista.length+")";
+  if(!lista.length){var v=document.createElement("p");v.className="ayuda";v.textContent="Todavía no hay productos.";cont.appendChild(v);}
+  lista.forEach(function(x){
+    var p=x.p,f=document.createElement("div");f.className="fila";
+    var img=document.createElement("img");img.src="../"+p.foto;img.alt="";img.loading="lazy";
+    var info=document.createElement("div");info.className="info";
+    var n=document.createElement("div");n.className="n";n.textContent=p.nombre;
+    var d=document.createElement("div");d.className="d";
+    d.textContent=(p.tipo==="amazon"?"Amazon":(p.marca||"Marca")+(p.patrocinado!==false?" · Patrocinado":""))+" · "+(p.categoria||"—")+" · "+p.fecha;
+    info.appendChild(n);info.appendChild(d);
+    var acc=document.createElement("div");acc.className="acc";
+    var be=document.createElement("button");be.type="button";be.className="btn chico";be.textContent="Editar";be.onclick=function(){editar(p);};
+    var bq=document.createElement("button");bq.type="button";bq.className="btn chico peligro";bq.textContent="Quitar";bq.onclick=function(){quitar(p);};
+    acc.appendChild(be);acc.appendChild(bq);
+    f.appendChild(img);f.appendChild(info);f.appendChild(acc);cont.appendChild(f);
+  });
+}
+
+/* ---------- Inicio ---------- */
+function mostrar(conectado){
+  $("conectar").hidden=conectado;["formTarjeta","listaTarjeta","pie"].forEach(function(id){$(id).hidden=!conectado;});
+}
+function iniciar(){
+  llave=leerLlave();
+  if(!llave){mostrar(false);return;}
+  mostrar(true);aviso("msgForm","info","Cargando…");
+  cargarDatos().then(function(d){datos=d;pintarLista();limpiarForm();aviso("msgForm","","");})
+    .catch(function(e){
+      if(e&&(e.status===401||e.status===403||e.status===404)){mostrar(false);aviso("msgConectar","mal",explicarError(e));}
+      else aviso("msgForm","mal","No se pudo cargar la lista. Revisa tu internet y toca «Actualizar lista».");
+    });
+}
+$("btnConectar").addEventListener("click",function(){
+  var v=$("llave").value.trim();
+  if(!v){aviso("msgConectar","mal","Pega la llave primero.");return;}
+  llave=v;aviso("msgConectar","info","Revisando la llave…");
+  gh("GET","/repos/"+DUENO+"/"+REPO).then(function(r){
+    if(r.permissions&&r.permissions.push===false)throw {status:403};
+    guardarLlave(v);$("llave").value="";aviso("msgConectar","","");iniciar();
+  }).catch(function(e){llave="";aviso("msgConectar","mal",explicarError(e));});
+});
+$("btnDesconectar").addEventListener("click",function(){
+  if(!confirm("¿Desconectar este dispositivo? Tendrás que pegar la llave otra vez para usar el panel."))return;
+  guardarLlave("");llave="";datos=null;mostrar(false);
+});
+$("btnRecargar").addEventListener("click",iniciar);
+iniciar();
+})();
+</script>
+</body>
+</html>

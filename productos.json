@@ -1,0 +1,77 @@
+{
+  "perfil": {
+    "instagram": "",
+    "tiktok": "",
+    "facebook": ""
+  },
+  "categorias": [
+    {
+      "es": "Tecnología",
+      "en": "Technology"
+    },
+    {
+      "es": "Hogar",
+      "en": "Home"
+    }
+  ],
+  "productos": [
+    {
+      "nombre": "Licuadora portátil",
+      "nombre_en": "Portable blender",
+      "enlace": "https://www.amazon.com/",
+      "foto": "fotos/ejemplo-1.svg",
+      "tipo": "amazon",
+      "categoria": "Hogar",
+      "fecha": "2026-11-08"
+    },
+    {
+      "nombre": "Lámpara de escritorio LED",
+      "nombre_en": "LED desk lamp",
+      "enlace": "https://example.com/",
+      "foto": "fotos/ejemplo-2.svg",
+      "tipo": "marca",
+      "categoria": "Hogar",
+      "fecha": "2026-11-06",
+      "marca": "Lumi (ejemplo)",
+      "patrocinado": true
+    },
+    {
+      "nombre": "Audífonos inalámbricos",
+      "nombre_en": "Wireless earbuds",
+      "enlace": "https://www.amazon.com/",
+      "foto": "fotos/ejemplo-3.svg",
+      "tipo": "amazon",
+      "categoria": "Tecnología",
+      "fecha": "2026-11-04"
+    },
+    {
+      "nombre": "Organizador de cocina",
+      "nombre_en": "Kitchen organizer",
+      "enlace": "https://www.amazon.com/",
+      "foto": "fotos/ejemplo-4.svg",
+      "tipo": "amazon",
+      "categoria": "Hogar",
+      "fecha": "2026-11-01"
+    },
+    {
+      "nombre": "Crema hidratante",
+      "nombre_en": "Moisturizing cream",
+      "enlace": "https://example.com/",
+      "foto": "fotos/ejemplo-5.svg",
+      "tipo": "marca",
+      "categoria": "Hogar",
+      "fecha": "2026-10-29",
+      "marca": "Piel Viva (ejemplo)",
+      "patrocinado": true
+    },
+    {
+      "nombre": "Soporte para celular",
+      "nombre_en": "Phone stand",
+      "enlace": "https://www.amazon.com/",
+      "foto": "fotos/ejemplo-6.svg",
+      "tipo": "amazon",
+      "categoria": "Tecnología",
+      "fecha": "2026-10-25"
+    }
+  ]
+}
